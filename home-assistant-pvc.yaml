@@ -37,7 +37,8 @@ spec:
   capacity:
     storage: 1Gi
   persistentVolumeReclaimPolicy: Retain
-  hostPath: /home-assistant/pv
+  hostPath: 
+    path: /home-assistant/pv
   claimRef:
     name: home-assistant-pvc-config
     namespace: home-assistant
