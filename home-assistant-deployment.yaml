@@ -8,31 +8,31 @@ spec:
   selector:
     matchLabels:
       app: home-assistant # to bind this deployment to the pod described in `template` using the `app: home-assistant` label  
-    template: # pod definition
-      metadata:
-        labels:
-          app: home-assistant # to bind this pod to the deployment using the `app: home-assistant` label
-      spec:
-        hostNetwork: true
-        nodeSelector:
-          kubernetes.io/hostname: BunnyPi1
-        containers:
-          - name: home-assistant
-            image: homeassistant/home-assistant:stable
-            ports:
-              - containerPort: 8123
-            volumeMounts: # Home Assistant pod requires two volumes: one for configuration and one for timezone data. The configuration volume is mounted at /config, while the time zone data is mounted at /etc/localtime.
-              - name: home-assistant-pv-config
-                mountPath: /config
-              - name: home-assistant-pv-time
-                mountPath: /etc/localtime
-                readOnly: true
-        restartPolicy: Always
-        volumes:
-          - name: home-assistant-pv-config
-            persistentVolumeClaim:
-              claimName: home-assistant-pv-config
-          - name: home-assistant-pv-time
-            persistentVolumeClaim: 
-              claimName: home-assistant-pv-time
+  template: # pod definition
+    metadata:
+      labels:
+        app: home-assistant # to bind this pod to the deployment using the `app: home-assistant` label
+    spec:
+      hostNetwork: true
+      nodeSelector:
+        kubernetes.io/hostname: bunnypi1
+      containers:
+        - name: home-assistant
+          image: homeassistant/home-assistant:stable
+          ports:
+            - containerPort: 8123
+          volumeMounts: # Home Assistant pod requires two volumes: one for configuration and one for timezone data. The configuration volume is mounted at /config, while the time zone data is mounted at /etc/localtime.
+            - name: home-assistant-pv-config
+              mountPath: /config
+            - name: home-assistant-pv-time
+              mountPath: /etc/localtime
               readOnly: true
+      restartPolicy: Always
+      volumes:
+        - name: home-assistant-pv-config
+          persistentVolumeClaim:
+            claimName: home-assistant-pv-config
+        - name: home-assistant-pv-time
+          persistentVolumeClaim: 
+            claimName: home-assistant-pv-time
+            readOnly: true
