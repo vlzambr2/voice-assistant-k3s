@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: speech-to-phrase-deployment
+  namespace: voice-assistant
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: speech-to-phrase
+  template: # pod definition
+    metadata: 
+      labels:
+        app: speech-to-phrase
+    spec:
+      containers:
+        - name: speech-to-phrase
+          image: rhasspy/wyoming-speech-to-phrase:latest
+          env: 
+            - name: HASS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: home-assistant-token
+                  key: token
+          args:
+            - "--hass-websocket-uri"
+            - "ws://home-assistant-service.home-assistant.svc.cluster.local:8123/api/websocket"
+            - "--hass-token"
+            - "$HASS_TOKEN"
+            - "--retrain-on-start"
+          ports:
+            - containerPort: 10300
+          volumeMounts: # Speech-to-Phrase pod requires two volumes, one for models (/models) and one to train (/train)
+            - name: speech-to-phrase-pv-models
+              mountPath: /models
+            - name: speech-to-phrase-pv-train
+              mountPath: /train
+      restartPolicy: Always
+      volumes:
+        - name: speech-to-phrase-pv-models
+          persistentVolumeClaim:
+            claimName: speech-to-phrase-pvc-models
+        - name: speech-to-phrase-pv-train
+          persistentVolumeClaim: 
+            claimName: speech-to-phrase-pvc-train
