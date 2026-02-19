@@ -14,6 +14,7 @@ spec:
         app: home-assistant # to bind this pod to the deployment using the `app: home-assistant` label
     spec:
       hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
       nodeSelector:
         kubernetes.io/hostname: bunnypi1
       containers:
