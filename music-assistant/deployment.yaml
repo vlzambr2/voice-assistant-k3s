@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: music-assistant-deployment
+  namespace: music-assistant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: music-assistant
+  template:
+    metadata:
+      labels:
+        app: music-assistant
+    spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+      containers:
+        - name: music-assistant-server
+          image: ghcr.io/music-assistant/server:latest
+          ports:
+            - containerPort: 8095
+          volumeMounts:
+            - name: music-assistant-pv-data
+              mountPath: /data
+      restartPolicy: Always
+      volumes:
+        - name: music-assistant-pv-data
+          persistentVolumeClaim:
+            claimName: music-assistant-pvc-data
+        - name: bunny-computer-music
+          hostPath: 
+            path: /music_fs/music/
+            type: Directory
+            readOnly: true
