@@ -20,7 +20,7 @@ spec:
             - "--custom-model-dir"
             - "/custom"
           ports:
-            containerPort: 10400
+            - containerPort: 10400
           volumeMounts: # 3 volumes are required for openWakeWord: /custom, /config, and /data
             - name: open-wake-word-custom-models
               mountPath: /custom
