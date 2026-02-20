@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: open-wake-word-service
+  namespace: voice-assistant
+spec:
+  type: ClusterIP
+  selector:
+    app: open-wake-word
+  ports:
+    - targetPort: 10400
+      port: 10400
+      name: open-wake-word-endpoint

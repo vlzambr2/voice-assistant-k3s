@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: open-wake-word-deployment
+  namespace: voice-assistant
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: open-wake-word
+  template:
+    metadata:
+      labels:
+        app: open-wake-word
+    spec:
+      containers:
+        - name: open-wake-word
+          image: rhasspy/wyoming-openwakeword:latest
+          args:
+            - "--custom-model-dir"
+            - "/custom"
+          ports:
+            containerPort: 10400
+          volumeMounts: # 3 volumes are required for openWakeWord: /custom, /config, and /data
+            - name: open-wake-word-custom-models
+              mountPath: /custom
+            - name: open-wake-word-pv-config
+              mountPath: /config
+            - name: open-wake-word-pv-data
+              mountPath: /data
+      restartPolicy: Always
+      volumes:
+        - name: open-wake-word-custom-models
+          hostPath:
+            path: /open-wake-word/custom/
+            type: Directory
+        - name: open-wake-word-pv-config
+          persistentVolumeClaim: 
+            claimName: open-wake-word-pvc-config
+        - name: open-wake-word-pv-data
+          persistentVolumeClaim:
+            claimName: open-wake-word-pvc-data
