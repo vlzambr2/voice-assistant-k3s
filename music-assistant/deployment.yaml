@@ -32,4 +32,4 @@ spec:
           hostPath: 
             path: /music_fs/music/
             type: Directory
-            readOnly: true
+          readOnly: true
