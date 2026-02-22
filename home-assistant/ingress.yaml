@@ -7,9 +7,9 @@ metadata:
     ingress.kubernetes.io/rewrite-target: /
 spec:
   tls: 
-    hosts:
+    - hosts:
       - https://home-assistant.local
-    secretName: home-assistant-secret-tls
+      secretName: home-assistant-secret-tls
   rules:
     - host: https://home-assistant.local
       http:

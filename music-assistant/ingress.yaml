@@ -7,9 +7,9 @@ metadata:
     ingress.kubernetes.io/rewrite-target: /
 spec:
   tls: 
-    hosts:
+    - hosts:
       - https://music-assistant.local
-    secretName: music-assistant-secret-tls
+      secretName: music-assistant-secret-tls
   rules:
     - host: https://music-assistant.local
       http:
