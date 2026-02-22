@@ -8,10 +8,10 @@ metadata:
 spec:
   tls: 
     - hosts:
-      - https://home-assistant.local
+      - home-assistant.local
       secretName: home-assistant-secret-tls
   rules:
-    - host: https://home-assistant.local
+    - host: home-assistant.local
       http:
         paths:
           - path: "/"

@@ -8,10 +8,10 @@ metadata:
 spec:
   tls: 
     - hosts:
-      - https://music-assistant.local
+      - music-assistant.local
       secretName: music-assistant-secret-tls
   rules:
-    - host: https://music-assistant.local
+    - host: music-assistant.local
       http:
         paths:
           - path: "/"
