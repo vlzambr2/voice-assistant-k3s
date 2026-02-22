@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata: 
+  name: music-assistant-ingress
+  namespace: music-assistant
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  tls: 
+    hosts:
+      - https://music-assistant.local
+    secretName: music-assistant-secret-tls
+  rules:
+    - host: music-assistant.local
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: music-assistant-service
+                port:
+                  number: 8095
