@@ -5,6 +5,7 @@ metadata:
   namespace: music-assistant
   annotations:
     ingress.kubernetes.io/rewrite-target: /
+    traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
   tls: 
     - hosts:
