@@ -11,7 +11,7 @@ spec:
       - https://music-assistant.local
     secretName: music-assistant-secret-tls
   rules:
-    - host: music-assistant.local
+    - host: https://music-assistant.local
       http:
         paths:
           - path: "/"

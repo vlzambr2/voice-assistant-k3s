@@ -11,7 +11,7 @@ spec:
       - https://home-assistant.local
     secretName: home-assistant-secret-tls
   rules:
-    - host: home-assistant.local
+    - host: https://home-assistant.local
       http:
         paths:
           - path: "/"
