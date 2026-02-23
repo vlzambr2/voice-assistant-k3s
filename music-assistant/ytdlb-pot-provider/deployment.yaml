@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ytdlp-pot-provider-deployment
+  namespace: music-assistant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ytdlp-pot-provider
+  template:
+    metadata:
+      labels:
+        app: ytdlp-pot-provider
+    spec:
+      containers:
+        - name: ytdlp-pot-provider
+          image: brainicism/bgutil-ytdlp-pot-provider:latest
+          ports:
+            - containerPort: 4416
