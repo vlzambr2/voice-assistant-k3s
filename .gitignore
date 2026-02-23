@@ -1,3 +1,5 @@
 # Do not commit any secrets
 secret.yaml
 secret-*.yaml
+*.crt
+*.key
