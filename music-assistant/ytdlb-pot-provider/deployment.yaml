@@ -15,7 +15,6 @@ spec:
     spec:
       containers:
         - name: ytdlp-pot-provider
-          # Referencing linux/arm64 platform image by manifest because of possible platform mismatch
-          image: brainicism/bgutil-ytdlp-pot-provider@sha256:38361117f05500e1d26a8aee015b5fb52b46046cbdba88e3cbc8d1445e10b8f1
+          image: brainicism/bgutil-ytdlp-pot-provider:latest
           ports:
             - containerPort: 4416
