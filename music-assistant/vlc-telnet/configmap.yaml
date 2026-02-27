@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: alsa_device
-  namespace: music_assistant
+  name: alsa-device
+  namespace: music-assistant
 data:
-  alsa_device: "Headphones"
+  alsa-device: "Headphones"

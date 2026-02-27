@@ -22,13 +22,13 @@ spec:
             - name: VLC_TELNET_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: vlc_telnet_password
+                  name: vlc-telnet-password
                   key: password
             - name: ALSA_DEVICE
               valueFrom:
                 configMapKeyRef:
-                  name: alsa_device
-                  key: alsa_device
+                  name: alsa-device
+                  key: alsa-device
           ports:
             - containerPort: 4212
           volumeMounts:
