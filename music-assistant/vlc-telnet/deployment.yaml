@@ -18,6 +18,8 @@ spec:
       containers:
         - name: vlc-telnet
           image: ne1ver/vlc-telnet:latest
+          securityContext:
+            priveliged: true
           env: 
             - name: VLC_TELNET_PASSWORD
               valueFrom:
@@ -34,7 +36,6 @@ spec:
           volumeMounts:
             - name: bunny-computer-device
               mountPath: /dev/snd
-              readOnly: true
       restartPolicy: Always
       volumes:
         - name: bunny-computer-device
