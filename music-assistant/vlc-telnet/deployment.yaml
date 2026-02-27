@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vlc-telnet-deployment
+  namespace: music-assistant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vlc-telnet
+  template:
+    metadata:
+      labels:
+        app: vlc-telnet
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: bunnypi1
+      containers:
+        - name: vlc-telnet
+          image: ne1ver/vlc-telnet:latest
+          env: 
+            - name: VLC_TELNET_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: vlc_telnet_password
+                  key: password
+            - name: ALSA_DEVICE
+              valueFrom:
+                configMapKeyRef:
+                  name: alsa_device
+                  key: alsa_device
+          ports:
+            - containerPort: 4212
+          volumeMounts:
+            - name: bunny-computer-device
+              mountPath: /dev/snd
+              readOnly: true
+      restartPolicy: Always
+      volumes:
+        - name: bunny-computer-device
+          hostPath:
+            path: /dev/snd
+            type: BlockDevice
