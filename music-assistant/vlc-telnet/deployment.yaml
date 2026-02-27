@@ -40,4 +40,4 @@ spec:
         - name: bunny-computer-device
           hostPath:
             path: /dev/snd
-            type: BlockDevice
+            type: Directory
