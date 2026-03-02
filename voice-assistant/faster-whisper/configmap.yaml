@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: faster-whisper-config
+  namespace: voice-assistant
+data:
+  TZ: "America/Los_Angeles"
+  PUID: 1000
+  PGID: 1000
+  WHISPER_LANG: "en"

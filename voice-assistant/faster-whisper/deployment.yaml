@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: faster-whisper-deployment
+  namespace: voice-assistant
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: faster-whisper
+  template: # pod definition
+    metadata: 
+      labels:
+        app: faster-whisper
+    spec:
+      containers:
+        - name: faster-whisper
+          image: lscr.io/linuxserver/faster-whisper:latest
+          envFrom:
+            - configMapRef:
+                name: faster-whisper-config
+          ports:
+            - containerPort: 10300
+          volumeMounts:
+            - name: faster-whisper-pv
+              mountPath: /config
+      restartPolicy: Always
+      volumes:
+        - name: faster-whisper-pv
+          persistentVolumeClaim:
+            claimName: faster-whisper-pvc
