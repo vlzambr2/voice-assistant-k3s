@@ -8,3 +8,4 @@ data:
   PUID: "1000"
   PGID: "1000"
   WHISPER_LANG: "en"
+  LOCAL_ONLY: "true"
