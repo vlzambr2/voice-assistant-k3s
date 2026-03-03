@@ -9,13 +9,13 @@ This project demonstrates a **microservices architecture** using Kubernetes.
 ## Integrations
 
 - **Music Assistant**: Local music playback with YouTube Music support.
-- **Voice Assistant Pipelie**: Faster Whisper and Open Wake Word for wake word detection and speech transcription.
+- **Voice Assistant Pipeline**: Faster Whisper and Open Wake Word for wake word detection and speech transcription.
 - **VLC Telnet**: Service providing access to speakers connected to Pi 3mm jack. 
 - **Home Assistant**: Voice assistant conversation agent and connective tissue between all services.
 
 ## Notes
-* Google TTS used for text-to-speech.
 * [Music Playback Voice Control](https://github.com/music-assistant/voice-support) Home Assistant blueprint applied to enable voice control of Music Assistant.
+* Google TTS used for text-to-speech.
 
 ## Acknowledgments
 
