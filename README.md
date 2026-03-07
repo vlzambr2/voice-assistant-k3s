@@ -28,6 +28,6 @@ This project demonstrates a **microservices architecture** using Kubernetes.
 
 This Kubernetes cluster is configured to run entirely on the **Bunny Computer**. 
 
-The Bunny Computer is a Pi cluster originally created in 2021 to use [Chapel](https://chapel-lang.org/) (open-source-parallel-programming language) to ["rip" CD .flac files in parallel](https://github.com/vlzambr2/process_album)-- now promoted to the role of home server!  **₍ᐢ. .ᐢ₎.** 
+The Bunny Computer is a Pi cluster originally created in 2022 to use [Chapel](https://chapel-lang.org/) (open-source-parallel-programming language) to ["rip" CD .flac files in parallel](https://github.com/vlzambr2/process_album)-- now promoted to the role of home server!  **₍ᐢ. .ᐢ₎.** 
 
 For more info about the Bunny Computer, visit [my personal website](https://www.vanessaz.info/pages/bunnycomputer).
