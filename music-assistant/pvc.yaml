@@ -9,7 +9,7 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: /music-assistant/pv/data
+    path: /gen_cluster_fs/volumes/music-assistant/data
   claimRef:
     name: music-assistant-pvc-data
     namespace: music-assistant

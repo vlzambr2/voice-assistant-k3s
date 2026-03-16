@@ -9,7 +9,7 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: /voice-assistant/pv/faster-whisper
+    path: /gen_cluster_fs/volumes/voice-assistant/faster-whisper
   claimRef:
     name: faster-whisper-pvc
     namespace: voice-assistant

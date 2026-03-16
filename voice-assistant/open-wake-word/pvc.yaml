@@ -9,7 +9,7 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: /open-wake-word/pv/config
+    path: /gen_cluster_fs/volumes/voice-assistant/open-wake-word/config
   claimRef:
     name: open-wake-word-pvc-config
     namespace: voice-assistant
@@ -38,7 +38,7 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: /open-wake-word/pv/data
+    path: /gen_cluster_fs/volumes/voice-assistant/open-wake-word/data
   claimRef:
     name: open-wake-word-pvc-data
     namespace: voice-assistant
