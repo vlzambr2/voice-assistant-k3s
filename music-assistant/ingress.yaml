@@ -10,10 +10,10 @@ spec:
   ingressClassName: traefik
   tls: 
     - hosts:
-      - music-assistant.local
+      - music-assistant.home.arpa
       secretName: music-assistant-secret-tls
   rules:
-    - host: music-assistant.local
+    - host: music-assistant.home.arpa
       http:
         paths:
           - path: "/"

@@ -10,10 +10,10 @@ spec:
   ingressClassName: traefik
   tls: 
     - hosts:
-      - home-assistant.local
+      - home-assistant.home.arpa
       secretName: home-assistant-secret-tls
   rules:
-    - host: home-assistant.local
+    - host: home-assistant.home.arpa
       http:
         paths:
           - path: "/"
