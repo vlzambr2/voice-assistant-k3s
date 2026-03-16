@@ -32,7 +32,7 @@ spec:
       volumes:
         - name: open-wake-word-custom-models
           hostPath:
-            path: /open-wake-word/custom/
+            path: /gen_cluster_fs/volumes/voice-assistant/open-wake-word/custom/
             type: Directory
         - name: open-wake-word-pv-config
           persistentVolumeClaim: 
