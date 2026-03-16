@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: home-assistant
+  name: home-assistant-deployment
   namespace: home-assistant
 spec:
   replicas: 1
@@ -15,8 +15,6 @@ spec:
     spec:
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
-      nodeSelector:
-        kubernetes.io/hostname: bunnypi1
       containers:
         - name: home-assistant
           image: homeassistant/home-assistant:stable
